@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+//==========================================================================
+//_media.scss
+//==========================================================================
+
+//-----------------------------------------------------------------
+//.c-media
+//-----------------------------------------------------------------
+.c-media {
+  @include smMin {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 -15px;
+  }
+  @include smMax {
+    > * + * {
+      margin-top: 20px;
+    }
+  }
+  .c-media__img {
+    @include smMin {
+      width: calc((100% / 2) - 30px);
+      margin: 0 15px;
+    }
+  }
+  .c-media__body {
+    @include smMin {
+      width: calc((100% / 2) - 30px);
+      margin: 0 15px;
+    }
+  }
+}
+
+.c-media--reverse {
+  @include smMin {
+    flex-flow: row-reverse;
+  }
+}
+
+
+
+
+

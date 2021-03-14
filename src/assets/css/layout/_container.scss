@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+//==========================================================================
+//_container.scss
+//==========================================================================
+
+//-----------------------------------------------------------------
+//.l-container
+//-----------------------------------------------------------------
+.l-container {
+  @include smMin {
+    padding: 100px 0;
+  }
+  @include smMax {
+    padding: 50px 0;
+  }
+  &:last-child {
+    @include smMin {
+      padding-bottom: 150px;
+    }
+    @include smMax {
+      padding-bottom: 80px;
+    }
+  }
+  &.l-container--gray {
+    background: $colorGray01;
+  }
+}
+
+

@@ -1,0 +1,63 @@
+@charset "utf-8";
+
+//==========================================================================
+//_btn.scss
+//==========================================================================
+
+//-----------------------------------------------------------------
+//.c-btn
+//-----------------------------------------------------------------
+.c-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 240px;
+  height: 50px;
+  text-align: center;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  border: 1px solid $colorPlain;
+  cursor: pointer;
+  position: relative;
+  @include transition;
+  &:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 5px;
+    top: -5px;
+    border: 1px solid rgba($colorPlain, 1);
+    @include transition;
+  }
+  @include smMin {
+    
+    &:hover {
+    //   background-color: $colorPlain;
+    // color: $white;
+      &:before {
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+}
+
+.c-btn-action {
+  font-size: 1.4rem;
+  height: 36px;
+  width: 150px;
+  border-color: $white;
+  &:before {
+    border-color: transparent;
+  }
+  @include smMin {
+    &:hover {
+      &:before {
+        border-color: $white;
+        left: 5px;
+        top: -5px;
+      }
+    }
+  }
+}
