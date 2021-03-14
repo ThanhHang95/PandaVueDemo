@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="cv-create" ref="content">
+    <div class="cv-create" ref="content" id="my-node">
       <div class="row">
         <div class="col-4">
           <div class="content-left info">
@@ -158,7 +158,7 @@
     <div class="group-btn">
       <div class="c-btn" @click="previewCV()" v-show="step == 1">Preview</div>
       <div class="c-btn" @click="step = 1" v-show="step == 2">Back</div>
-      <div class="c-btn" @click="print()" v-show="step == 2">Download PDF</div>
+      <div class="c-btn" @click="print()" v-show="step == 2">Download Image</div>
     </div>
   </div>
   
@@ -166,6 +166,9 @@
 
 <script>
 import jsPDF from 'jspdf' 
+
+import * as htmlToImage from 'html-to-image';
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
 export default {
   name: 'Form',
@@ -228,16 +231,27 @@ export default {
   },
   methods: {
     print: function() {
-      var doc = new jsPDF();
-      var contentHtml = this.$refs.content.innerHTML;
-      doc.html(contentHtml, {
-          'x': 15,
-          'y': 15,
-          'width': 170,
-          callback: function (doc) {
-            doc.save();
-          }
-      });
+      let self = this;
+      // var doc = new jsPDF();
+      // var contentHtml = this.$refs.content.innerHTML;
+      // doc.html(contentHtml, {
+      //     'x': 15,
+      //     'y': 15,
+      //     'width': 170,
+      //     callback: function (doc) {
+      //       doc.save();
+      //     }
+      // });
+
+      var node = document.getElementById('my-node');
+
+      htmlToImage.toPng(node)
+        .then(function (dataUrl) {
+          require("downloadjs")(dataUrl, 'my-cv.png');
+        })
+        .catch(function (error) {
+          console.error('oops, something went wrong!', error);
+        });
     },
     nl2br: function(str) {
       if (str)

@@ -3,7 +3,7 @@
     <div class="l-inner">
       <div class="index-group">
         <h2 class="c-ttl--01">About Demo</h2>
-        <div class="index-group__txt">Panda CV is an online CV generation tool made by VueJS. It makes it easy for users to fill in necessary information for their CV, preview it, and download it as pdf file for later use.</div>
+        <div class="index-group__txt">Panda CV is an online CV generation tool made by VueJS. It makes it easy for users to fill in necessary information for their CV, preview it, and download it as image file for later use.</div>
         <router-link :to="baseURL + 'create-cv/'" class="c-btn index-group__btn">Create CV</router-link>
       </div>
     </div>
